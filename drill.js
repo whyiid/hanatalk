@@ -1,6 +1,10 @@
 const HanaTalkDrill = (function () {
   const EXERCISE_TYPES = ['listen', 'recall', 'speak'];
 
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
   function buildSessionQueue(allEntries, tier, sessionSize, missedKeys) {
     const pool = allEntries.filter(e => e.tier === tier);
     if (pool.length === 0) return [];
@@ -40,14 +44,16 @@ const HanaTalkDrill = (function () {
       index: 0,
       state,
       onStateChange,
-      slow: false // spec §6 playback speed toggle — resets to normal each new session
+      slow: false, // spec §6 playback speed toggle — resets to normal each new session
+      locked: false
     };
     renderCard(root);
   }
 
   function renderCard(root) {
+    session.locked = false;
     if (!session.queue.length) {
-      root.innerHTML = `<h2>Belum ada konten</h2><p>Tidak ada frasa untuk tier "${session.state.tier}" ini.</p>`;
+      root.innerHTML = `<h2>Belum ada konten</h2><p>Tidak ada frasa untuk tier "${esc(session.state.tier)}" ini.</p>`;
       return;
     }
     if (session.index >= session.queue.length) {
@@ -68,8 +74,8 @@ const HanaTalkDrill = (function () {
             <button id="play-btn">🔊 Play</button>
             <button id="speed-toggle" class="chip${session.slow ? ' active' : ''}">🐢 Pelan</button>
           </div>
-        ` : `<p class="prompt">${entry.id}</p>`}
-        <div class="choices">${choices.map(c => `<button class="choice-btn" data-value="${c}">${c}</button>`).join('')}</div>
+        ` : `<p class="prompt">${esc(entry.id)}</p>`}
+        <div class="choices">${choices.map(c => `<button class="choice-btn" data-value="${esc(c)}">${esc(c)}</button>`).join('')}</div>
       `;
       if (exerciseType === 'listen') {
         root.querySelector('#play-btn').addEventListener('click', () => HanaTalkAudio.play(entry.ko, { slow: session.slow }));
@@ -86,8 +92,8 @@ const HanaTalkDrill = (function () {
     } else {
       root.innerHTML = `
         <p class="progress-count">${session.index + 1}/${session.queue.length}</p>
-        <p class="prompt">${entry.ko}</p>
-        <p class="romaja">${entry.romaja}</p>
+        <p class="prompt">${esc(entry.ko)}</p>
+        <p class="romaja">${esc(entry.romaja)}</p>
         ${HanaTalkAudio.speechSupported
           ? `<button id="mic-btn">🎤 Ucapkan</button>`
           : `<button id="confirm-btn">✅ Sudah saya ucapkan</button>`}
@@ -107,6 +113,8 @@ const HanaTalkDrill = (function () {
   }
 
   function answer(root, entry, correct) {
+    if (session.locked) return;
+    session.locked = true;
     HanaTalkProgress.recordAnswer(session.state, entry, correct);
     HanaTalkProgress.addXP(session.state, session.queue[session.index].exerciseType);
     HanaTalkProgress.checkBadges(session.state, HanaTalkData.ENTRIES);
