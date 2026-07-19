@@ -43,7 +43,57 @@ const HanaTalkData = (function () {
     { ko: '영수증 주세요', romaja: 'yeongsujeung juseyo', id: 'Tolong kwitansinya', category: 'clinic-payment', tier: 'beginner', type: 'sentence' },
     { ko: '진료 기록을 받을 수 있을까요?', romaja: 'jillyo girogeul badeul su isseulkkayo?', id: 'Bisa minta rekam medisnya?', category: 'clinic-payment', tier: 'intermediate', type: 'sentence' },
     { ko: '천천히 말씀해 주세요', romaja: 'cheoncheonhi malsseumhae juseyo', id: 'Tolong bicara pelan-pelan', category: 'clinic-staff', tier: 'beginner', type: 'sentence' },
-    { ko: '통역 가능하세요?', romaja: 'tongyeok ganeunghaseyo?', id: 'Bisa menerjemahkan?', category: 'clinic-staff', tier: 'intermediate', type: 'sentence' }
+    { ko: '통역 가능하세요?', romaja: 'tongyeok ganeunghaseyo?', id: 'Bisa menerjemahkan?', category: 'clinic-staff', tier: 'intermediate', type: 'sentence' },
+    // --- Perluasan klinik (batch 2) : ~8-9 frasa/kategori, tetap framing "liaison Korea" ---
+    // clinic-greeting
+    { ko: '처음 뵙겠습니다', romaja: 'cheoeum boepgetseumnida', id: 'Senang bertemu (pertama kali)', category: 'clinic-greeting', tier: 'beginner', type: 'phrase' },
+    { ko: '환자와 함께 왔어요', romaja: 'hwanjawa hamkke wasseoyo', id: 'Saya datang bersama pasien', category: 'clinic-greeting', tier: 'beginner', type: 'sentence' },
+    { ko: '오늘 일정을 확인하고 싶어요', romaja: 'oneul iljeongeul hwaginhago sipeoyo', id: 'Saya ingin cek jadwal hari ini', category: 'clinic-greeting', tier: 'intermediate', type: 'sentence' },
+    { ko: '담당 선생님을 뵐 수 있을까요?', romaja: 'damdang seonsaengnimeul boel su isseulkkayo?', id: 'Bisa bertemu dokter penanggung jawab?', category: 'clinic-greeting', tier: 'intermediate', type: 'sentence' },
+    { ko: '시간 내주셔서 감사합니다', romaja: 'sigan naejusyeoseo gamsahamnida', id: 'Terima kasih sudah meluangkan waktu', category: 'clinic-greeting', tier: 'intermediate', type: 'sentence' },
+    { ko: '잘 부탁드립니다', romaja: 'jal butakdeurimnida', id: 'Mohon kerja samanya', category: 'clinic-greeting', tier: 'beginner', type: 'phrase' },
+    // clinic-consultation
+    { ko: '열이 있어요', romaja: 'yeori isseoyo', id: 'Ada demam', category: 'clinic-consultation', tier: 'beginner', type: 'sentence' },
+    { ko: '환자가 어지러워해요', romaja: 'hwanjaga eojireowohaeyo', id: 'Pasien merasa pusing', category: 'clinic-consultation', tier: 'intermediate', type: 'sentence' },
+    { ko: '이 부위가 부었어요', romaja: 'i buwiga bueosseoyo', id: 'Bagian ini bengkak', category: 'clinic-consultation', tier: 'intermediate', type: 'sentence' },
+    { ko: '언제부터 아팠어요?', romaja: 'eonjebuteo apasseoyo?', id: 'Sejak kapan sakitnya?', category: 'clinic-consultation', tier: 'intermediate', type: 'sentence' },
+    { ko: '과거 병력이 있어요', romaja: 'gwageo byeongnyeogi isseoyo', id: 'Ada riwayat penyakit', category: 'clinic-consultation', tier: 'advanced', type: 'sentence' },
+    { ko: '임신 중이에요', romaja: 'imsin jungieyo', id: 'Sedang hamil', category: 'clinic-consultation', tier: 'beginner', type: 'sentence' },
+    // clinic-treatment
+    { ko: '이 시술은 어떻게 진행되나요?', romaja: 'i sisureun eotteoke jinhaengdoenayo?', id: 'Tindakan ini prosesnya bagaimana?', category: 'clinic-treatment', tier: 'advanced', type: 'sentence' },
+    { ko: '부작용이 있나요?', romaja: 'bujagyongi innayo?', id: 'Ada efek samping?', category: 'clinic-treatment', tier: 'intermediate', type: 'sentence' },
+    { ko: '몇 번 받아야 하나요?', romaja: 'myeot beon badaya hanayo?', id: 'Perlu berapa kali tindakan?', category: 'clinic-treatment', tier: 'intermediate', type: 'sentence' },
+    { ko: '흉터가 남나요?', romaja: 'hyungteoga namnayo?', id: 'Apakah meninggalkan bekas luka?', category: 'clinic-treatment', tier: 'intermediate', type: 'sentence' },
+    { ko: '다른 방법도 있나요?', romaja: 'dareun bangbeopdo innayo?', id: 'Ada metode lain?', category: 'clinic-treatment', tier: 'intermediate', type: 'sentence' },
+    { ko: '결과는 언제 나와요?', romaja: 'gyeolgwaneun eonje nawayo?', id: 'Hasilnya kapan keluar?', category: 'clinic-treatment', tier: 'beginner', type: 'sentence' },
+    // clinic-procedure
+    { ko: '긴장하지 마세요', romaja: 'ginjanghaji maseyo', id: 'Jangan tegang', category: 'clinic-procedure', tier: 'beginner', type: 'sentence' },
+    { ko: '조금 아플 수 있어요', romaja: 'jogeum apeul su isseoyo', id: 'Mungkin terasa sedikit sakit', category: 'clinic-procedure', tier: 'intermediate', type: 'sentence' },
+    { ko: '숨을 크게 쉬세요', romaja: 'sumeul keuge swiseyo', id: 'Tarik napas panjang', category: 'clinic-procedure', tier: 'intermediate', type: 'sentence' },
+    { ko: '움직이지 마세요', romaja: 'umjigiji maseyo', id: 'Jangan bergerak', category: 'clinic-procedure', tier: 'beginner', type: 'sentence' },
+    { ko: '거의 다 됐어요', romaja: 'geoui da dwaesseoyo', id: 'Hampir selesai', category: 'clinic-procedure', tier: 'beginner', type: 'phrase' },
+    { ko: '불편하면 말씀하세요', romaja: 'bulpyeonhamyeon malsseumhaseyo', id: 'Kalau tidak nyaman, beri tahu', category: 'clinic-procedure', tier: 'intermediate', type: 'sentence' },
+    // clinic-aftercare
+    { ko: '상처에 물이 닿지 않게 하세요', romaja: 'sangcheoe muri datji anke haseyo', id: 'Jaga luka jangan sampai kena air', category: 'clinic-aftercare', tier: 'advanced', type: 'sentence' },
+    { ko: '무리하지 마세요', romaja: 'murihaji maseyo', id: 'Jangan memaksakan diri', category: 'clinic-aftercare', tier: 'beginner', type: 'sentence' },
+    { ko: '냉찜질을 하세요', romaja: 'naengjjimjireul haseyo', id: 'Lakukan kompres dingin', category: 'clinic-aftercare', tier: 'intermediate', type: 'sentence' },
+    { ko: '실밥은 언제 풀어요?', romaja: 'silbabeun eonje pureoyo?', id: 'Kapan jahitan dibuka?', category: 'clinic-aftercare', tier: 'intermediate', type: 'sentence' },
+    { ko: '붓기는 며칠 지나면 가라앉아요', romaja: 'butgineun myeochil jinamyeon garaanjayo', id: 'Bengkak turun setelah beberapa hari', category: 'clinic-aftercare', tier: 'advanced', type: 'sentence' },
+    { ko: '문제가 있으면 병원에 연락 주세요', romaja: 'munjega isseumyeon byeongwone yeollak juseyo', id: 'Kalau ada masalah, hubungi klinik', category: 'clinic-aftercare', tier: 'intermediate', type: 'sentence' },
+    // clinic-payment
+    { ko: '총 비용이 얼마예요?', romaja: 'chong biyongi eolmayeyo?', id: 'Total biayanya berapa?', category: 'clinic-payment', tier: 'beginner', type: 'sentence' },
+    { ko: '카드로 결제할게요', romaja: 'kadeuro gyeoljehalgeyo', id: 'Saya bayar pakai kartu', category: 'clinic-payment', tier: 'beginner', type: 'sentence' },
+    { ko: '견적서를 받을 수 있을까요?', romaja: 'gyeonjeokseoreul badeul su isseulkkayo?', id: 'Bisa minta surat estimasi biaya?', category: 'clinic-payment', tier: 'advanced', type: 'sentence' },
+    { ko: '추가 비용이 있나요?', romaja: 'chuga biyongi innayo?', id: 'Ada biaya tambahan?', category: 'clinic-payment', tier: 'intermediate', type: 'sentence' },
+    { ko: '보험 처리가 되나요?', romaja: 'boheom cheoriga doenayo?', id: 'Bisa diproses asuransi?', category: 'clinic-payment', tier: 'intermediate', type: 'sentence' },
+    { ko: '분할 납부가 가능한가요?', romaja: 'bunhal nabbuga ganeunghangayo?', id: 'Bisa bayar dengan cicilan?', category: 'clinic-payment', tier: 'advanced', type: 'sentence' },
+    // clinic-staff
+    { ko: '다시 한번 말씀해 주세요', romaja: 'dasi hanbeon malsseumhae juseyo', id: 'Tolong ulangi sekali lagi', category: 'clinic-staff', tier: 'beginner', type: 'sentence' },
+    { ko: '잘 못 들었어요', romaja: 'jal mot deureosseoyo', id: 'Saya kurang jelas mendengarnya', category: 'clinic-staff', tier: 'intermediate', type: 'sentence' },
+    { ko: '여기에 적어 주실 수 있어요?', romaja: 'yeogie jeogeo jusil su isseoyo?', id: 'Bisa tuliskan di sini?', category: 'clinic-staff', tier: 'intermediate', type: 'sentence' },
+    { ko: '이해했어요', romaja: 'ihaehaesseoyo', id: 'Saya mengerti', category: 'clinic-staff', tier: 'beginner', type: 'phrase' },
+    { ko: '연락처를 알 수 있을까요?', romaja: 'yeollakcheoreul al su isseulkkayo?', id: 'Bisa minta nomor kontaknya?', category: 'clinic-staff', tier: 'intermediate', type: 'sentence' },
+    { ko: '도와주셔서 감사합니다', romaja: 'dowajusyeoseo gamsahamnida', id: 'Terima kasih atas bantuannya', category: 'clinic-staff', tier: 'beginner', type: 'phrase' }
   ];
 
   function entryKey(entry) {
